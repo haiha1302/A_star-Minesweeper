@@ -149,11 +149,11 @@ GraphSearch.prototype.cellClicked = function($end) {
         duration = (fTime-sTime).toFixed(2);
 
     if(path.length === 0) {
-        $("#message").text("couldn't find a path (" + duration + "ms)");
+        $("#message").text("Không tìm được đường đi (" + duration + "ms)");
         this.animateNoPath();
     }
     else {
-        $("#message").text("search took " + duration + "ms.");
+        $("#message").text("Thời gian: " + duration + "ms");
         this.drawDebugInfo();
         this.animatePath(path);
     }
