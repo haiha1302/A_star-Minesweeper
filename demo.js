@@ -2,7 +2,6 @@ var WALL = 0,
     performance = window.performance;
 
 $(function() {
-
     var $grid = $("#search_grid"),
         $selectWallFrequency = $("#selectWallFrequency"),
         $selectGridSize = $("#selectGridSize"),
@@ -34,10 +33,6 @@ $(function() {
         grid.initialize();
     });
 
-    $checkDebug.change(function() {
-        grid.setOption({debug: $(this).is(":checked")});
-    });
-
     $searchDiagonal.change(function() {
         var val = $(this).is(":checked");
         grid.setOption({diagonal: val});
@@ -46,14 +41,6 @@ $(function() {
 
     $checkClosest.change(function() {
         grid.setOption({closest: $(this).is(":checked")});
-    });
-
-    $("#generateWeights").click( function () {
-        if ($("#generateWeights").prop("checked")) {
-            $('#weightsKey').slideDown();
-        } else {
-            $('#weightsKey').slideUp();
-        }
     });
 
 });
@@ -68,7 +55,7 @@ function GraphSearch($graph, options, implementation) {
 }
 GraphSearch.prototype.setOption = function(opt) {
     this.opts = $.extend(this.opts, opt);
-    this.drawDebugInfo();
+    // this.drawDebugInfo();
 };
 GraphSearch.prototype.initialize = function() {
     this.grid = [];
@@ -154,25 +141,7 @@ GraphSearch.prototype.cellClicked = function($end) {
     }
     else {
         $("#message").text("Thời gian: " + duration + "ms");
-        this.drawDebugInfo();
         this.animatePath(path);
-    }
-};
-GraphSearch.prototype.drawDebugInfo = function() {
-    this.$cells.html(" ");
-    var that = this;
-    if(this.opts.debug) {
-        that.$cells.each(function() {
-            var node = that.nodeFromElement($(this)),
-                debug = false;
-            if (node.visited) {
-                debug = "F: " + node.f + "<br />G: " + node.g + "<br />H: " + node.h;
-            }
-
-            if (debug) {
-                $(this).html(debug);
-            }
-        });
     }
 };
 GraphSearch.prototype.nodeFromElement = function($cell) {
@@ -195,8 +164,8 @@ GraphSearch.prototype.animatePath = function(path) {
     var grid = this.grid,
         timeout = 1000 / grid.length,
         elementFromNode = function(node) {
-        return grid[node.x][node.y];
-    };
+            return grid[node.x][node.y];
+        };
 
     var self = this;
     // will add start class if final
@@ -222,7 +191,7 @@ GraphSearch.prototype.animatePath = function(path) {
         elementFromNode(path[i]).addClass(css.active);
         setTimeout(function() {
             addClass(path, i+1);
-        }, timeout*path[i].getCost());
+        }, timeout * path[i].getCost());
     };
 
     addClass(path, 0);

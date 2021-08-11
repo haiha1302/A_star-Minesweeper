@@ -57,7 +57,7 @@ var astar = {
 
       // Grab the lowest f(x) to process next.  Heap keeps this sorted for us.
       var currentNode = openHeap.pop();
-
+      
       // End case -- result has been found, return the traced path.
       if (currentNode === end) {
         return pathTo(currentNode);
@@ -117,13 +117,16 @@ var astar = {
     // No result was found - empty array signifies failure to find path.
     return [];
   },
-  // See list of heuristics: http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+
   heuristics: {
+    // Khoang canh giua hai diem
     manhattan: function(pos0, pos1) {
       var d1 = Math.abs(pos1.x - pos0.x);
       var d2 = Math.abs(pos1.y - pos0.y);
       return d1 + d2;
     },
+
+    // Khoảng cach duong cheo
     diagonal: function(pos0, pos1) {
       var D = 1;
       var D2 = Math.sqrt(2);
@@ -132,6 +135,7 @@ var astar = {
       return (D * (d1 + d2)) + ((D2 - (2 * D)) * Math.min(d1, d2));
     }
   },
+
   cleanNode: function(node) {
     node.f = 0;
     node.g = 0;
