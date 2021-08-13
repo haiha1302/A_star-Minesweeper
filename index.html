@@ -1,61 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Thuật toán A*</title>
-	<link rel="stylesheet" href="./demo.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="container">
-		<div id="header"> 
-        	<h1>THUẬT TOÁN A*</h1>
-		</div>
+    <div class="main">
+        <table>
+            <tr>
+                <td class="cell" id="0"></td>
+                <td class="cell" id="1"></td>
+                <td class="cell" id="2"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="3"></td>
+                <td class="cell" id="4"></td>
+                <td class="cell" id="5"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="6"></td>
+                <td class="cell" id="7"></td>
+                <td class="cell" id="8"></td>
+            </tr>
+        </table>
+        <p>Choose</p>
+        <div class="options">
+            <div class="dots">
+            </div>
+            <div class="dots2">
+            </div>
+        </div>
+    </div>
 
-		<div id="content" class="content">
-			<div id="controls" class='clear'>
-				<label for="selectWallFrequency">Tần số chướng ngại vật: </label>
-				<select id="selectWallFrequency">
-					<option value=".1">10%</option>
-					<option value=".2">20%</option>
-					<option value=".3">30%</option>
-					<option value=".4">40%</option>
-				</select>
-				<br/>
-				<label for="selectGridSize">Kích thước bảng: </label>
-				<select id="selectGridSize" name="selectGridSize">
-					<option value="10">10x10</option>
-					<option value="15">15x15</option>
-					<option value="20">20x20</option>
-					<option value="30" selected="selected">30x30</option>
-					<option value="40">40x40</option>
-					<option value="50">50x50</option>
-				</select>
-				<br/>
-				<label for="searchDiagonal">Cho phép di chuyển theo đường chéo?</label>
-				<input type="checkbox" name="searchDiagonal" id="searchDiagonal" />
-				<br/>
-				<label for="checkClosest">Dừng lại ở nút gần nhất nếu không thể đi được?</label>
-				<input type="checkbox" name="checkClosest" id="checkClosest" />
-				<br/>
-
-				<button id="btnGenerate" class="btn">Tạo map mới</button>
-				<br/>
-				<span id="message">Chọn một điểm trên bảng để tìm đường đi.</span>
-			</div>
-
-			<div id="main" class="table">
-				<div id="search_grid">Loading grid...</div>
-			</div>
-		</div>
-		<div id="footer">
-			
-		</div>
-	</div>
-
-	<script type='text/javascript' src='jquery-1.7.1.min.js'></script>
-	<script type='text/javascript' src='astar.js'></script>
-	<script type='text/javascript' src='demo.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
