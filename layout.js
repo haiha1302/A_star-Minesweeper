@@ -17,68 +17,6 @@ function setup() {
   h = height / 3;
 }
 
-function equals3(a, b, c) {
-  return a == b && b == c && a != '';
-}
-
-function checkWinner() {
-  let winner = null;
-  
-  // Kiểm tra theo chiều ngang
-  for (let i = 0; i < 3; i++) {
-    if (equals3(chessBoard[i][0], chessBoard[i][1], chessBoard[i][2])) {
-      winner = chessBoard[i][0];
-    }
-  }
-
-  // Kiểm tra theo chiều dọc
-  for (let i = 0; i < 3; i++) {
-    if (equals3(chessBoard[0][i], chessBoard[1][i], chessBoard[2][i])) {
-      winner = chessBoard[0][i];
-    }
-  }
-
-  // Kiểm tra theo đường chéo chính
-  if (equals3(chessBoard[0][0], chessBoard[1][1], chessBoard[2][2])) {
-    winner = chessBoard[0][0];
-  }
-
-  // Kiểm tra theo đường chéo phụ
-  if (equals3(chessBoard[2][0], chessBoard[1][1], chessBoard[0][2])) {
-    winner = chessBoard[2][0];
-  }
-
-  //Đếm số ô trống còn lại
-  let blankBox = 0;
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (chessBoard[i][j] == '') {
-        blankBox++;
-      }
-    }
-  }
-
-  if (winner == null && blankBox == 0) {
-    return 'tie';
-  } else {
-    return winner;
-  }
-}
-
-function mousePressed() {
-  // Kiểm tra mỗi khi người chơi click vào 
-  if (currentPlayer == Human) {
-    let i = floor(mouseX / w);// Lấy vị trí được click
-    let j = floor(mouseY / h);
-
-    if (chessBoard[i][j] == '') {
-      chessBoard[i][j] = Human; // Đặt vị trí hiện tại là human
-      currentPlayer = AI; // Đăt lượt chơi cho AI và gọi hàm di chuyển của AI
-      AIMove();
-    }
-  }
-}
-
 function draw() {
   background(255);
   strokeWeight(4);
@@ -117,4 +55,64 @@ function draw() {
       resultP.html(`${result} is Win!`);
     }
   }
+}
+
+function equals3(a, b, c) {
+  return a == b && b == c && a != '';
+}
+
+function checkWinner() {
+  let winner = null;
+  // Kiểm tra theo chiều ngang
+  for (let i = 0; i < 3; i++) {
+    if (equals3(chessBoard[i][0], chessBoard[i][1], chessBoard[i][2])) {
+      winner = chessBoard[i][0];
+    }
+  }
+  // Kiểm tra theo chiều dọc
+  for (let i = 0; i < 3; i++) {
+    if (equals3(chessBoard[0][i], chessBoard[1][i], chessBoard[2][i])) {
+      winner = chessBoard[0][i];
+    }
+  }
+  // Kiểm tra theo đường chéo chính
+  if (equals3(chessBoard[0][0], chessBoard[1][1], chessBoard[2][2])) {
+    winner = chessBoard[0][0];
+  }
+  // Kiểm tra theo đường chéo phụ
+  if (equals3(chessBoard[2][0], chessBoard[1][1], chessBoard[0][2])) {
+    winner = chessBoard[2][0];
+  }
+  // Tính số ô còn trống
+  let blankBox = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (chessBoard[i][j] == '') {
+        blankBox++;
+      }
+    }
+  }
+  if (winner == null && blankBox == 0) {
+    return 'tie';
+  } else {
+    return winner;
+  }
+}
+
+function mousePressed() {
+  // Kiểm tra mỗi khi người chơi click vào 
+  if (currentPlayer == Human) {
+    let i = floor(mouseX / w);// Lấy vị trí được click
+    let j = floor(mouseY / h);
+
+    if (chessBoard[i][j] == '') {
+      chessBoard[i][j] = Human; // Đặt vị trí hiện tại là human
+      currentPlayer = AI; // Đăt lượt chơi cho AI và gọi hàm di chuyển của AI
+      AIMove();
+    }
+  }
+}
+
+function reset() {
+  draw()
 }
