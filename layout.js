@@ -7,8 +7,8 @@ const chessBoard = [
 
 let w; // = width / 3;
 let h; // = height / 3;
-const AI = 'X';
-const Human = 'O';
+const AI = 'O';
+const Human = 'X';
 let currentPlayer = Human;
 
 function setup() {
@@ -36,10 +36,10 @@ function draw() {
       textSize(32);
       if (box == Human) {
         noFill();
-        ellipse(x, y, r * 2);
-      } else if (box == AI) {
         line(x - r, y - r, x + r, y + r);
         line(x + r, y - r, x - r, y + r);
+      } else if (box == AI) {
+        ellipse(x, y, r * 2);
       }
     }
   }
@@ -114,5 +114,5 @@ function mousePressed() {
 }
 
 function reset() {
-  draw()
+  currentPlayer = Human
 }

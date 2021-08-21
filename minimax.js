@@ -21,8 +21,8 @@ const AIMove = () => {
 }
 
 let scores = {
-  X: 1,
-  O: -1,
+  O: 1,
+  X: -1,
   tie: 0,
 };
 
