@@ -112,22 +112,16 @@ function init(player, OPPONENT) {
     });
 
     function minimax(gameData, PLAYER) {
-        if(isWinner(gameData, player.computer) ) return { evaluation : +10 };
-        if(isWinner(gameData, player.man)      ) return { evaluation : -10 };
+        if(isWinner(gameData, player.computer) ) return { evaluation : +1 };
+        if(isWinner(gameData, player.man)      ) return { evaluation : -1 };
         if(isTie(gameData)                     ) return { evaluation : 0 };
-
         let EMPTY_SPACES = getEmptySpaces(gameData);
-
         let moves = [];
-
         // Kiểm tra các nước để tìm đường tối ưu
         for( let i = 0; i < EMPTY_SPACES.length; i++) {
             let id = EMPTY_SPACES[i];
-
             let backup = gameData[id];
-
             gameData[id] = PLAYER;
-
             // Lưu lại giá trị đường đi
             let move = {};
             move.id = id;
@@ -136,7 +130,6 @@ function init(player, OPPONENT) {
             } else {
                 move.evaluation = minimax(gameData, player.computer).evaluation;
             }
-
             gameData[id] = backup;
             moves.push(move);
         }
