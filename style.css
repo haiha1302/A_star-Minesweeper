@@ -30,7 +30,7 @@
 .options h1{
     text-align: center;
     font-size: 65px;
-    font-family: 'Fascinate Inline', cursive;
+    font-family: 'Sans-serif', cursive;
     color: #f00;
     margin: 30px 0 20px 0;
 }
@@ -48,7 +48,7 @@
 .options .computer, .x{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
-    background-color: #FFF;
+    background-color: #c3ddff;
     color: #000;
     font-size: 1.5em;
     border-radius: 5px;
@@ -57,12 +57,13 @@
     text-align: center;
     cursor: pointer;
     border: 1px solid #000;
+    border: none;
 }
 
 .options .friend, .o{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
-    background-color: #FFF;
+    background-color: #c3ddff;
     color: #000;
     font-size: 1.5em;
     border-radius: 5px;
@@ -71,10 +72,11 @@
     text-align: center;
     cursor: pointer;
     border: 1px solid #000;
+    border: none;
 }
 
 .options .friend:hover, .computer:hover, .x:hover, .o:hover{
-    background-color: #011627;
+    background-color: #FFCCCC;
     color: #FFF;
 }
 
@@ -85,20 +87,21 @@
     display: block;
     margin: 25px auto;
     border-radius: 5px;
-    border: 1px solid #011627;
+    border: none;
     text-align: center;
     padding: 10px;
-    background-color: #011627;
-    color: #FFF;
+    background-color: #c3ddff;
+    color: #000;
     cursor: pointer;
     transition: 100ms width ease-in;
 }
 .options .play:hover{
+    background-color: #FFCCCC;
     width: 110px;
 }
 
 .active{
-    background-color: #011627 !important;
+    background-color: #FFCCCC !important;
     color: #FFF !important;
 }
 
