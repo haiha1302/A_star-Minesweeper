@@ -127,6 +127,7 @@ function init(player, OPPONENT) {
             move.id = id;
             if( PLAYER == player.computer) {
                 move.evaluation = minimax(gameData, player.man).evaluation;
+                console.log(move.evaluation);
             } else {
                 move.evaluation = minimax(gameData, player.computer).evaluation;
             }
@@ -142,7 +143,7 @@ function init(player, OPPONENT) {
                     bestMove = moves[i];
                 }
             }
-        }else{
+        } else {
             let bestEvaluation = +Infinity;
             for(let i = 0; i < moves.length; i++) {
                 if( moves[i].evaluation < bestEvaluation ) {
@@ -197,7 +198,7 @@ function init(player, OPPONENT) {
     }
 
     function showGameOver(player) {
-        let message = player == "tie" ? "Oops No Winner" : "The Winner is";
+        let message = player == "tie" ? "No Winner" : "The Winner is";
         let imgSrc = `img/${player}.png`;
         gameOverElement.innerHTML = `
             <h1>${message}</1>
